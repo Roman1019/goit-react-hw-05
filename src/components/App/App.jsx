@@ -9,6 +9,7 @@ import MoviesPage from "../../pages/MoviesPage/MoviesPage.jsx";
 import MovieDetailsPage from "../../pages/MovieDetailsPage/MovieDetailsPage.jsx";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage.jsx";
 import MovieCast from "../MovieCast/MovieCast.jsx";
+import MovieReviews from "../MovieReviews/MovieReviews.jsx";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
           <Route path="cast" element={<MovieCast />} />
+          <Route path="reviews" element={<MovieReviews />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

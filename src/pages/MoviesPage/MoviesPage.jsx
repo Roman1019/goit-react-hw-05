@@ -18,7 +18,12 @@ export default function MoviesPage() {
     const searchQuery = inputRef.current.value.trim();
 
     const nextParams = new URLSearchParams(searchParams);
-    nextParams.set("query", searchQuery);
+    if (searchQuery !== "") {
+      nextParams.set("query", searchQuery);
+    } else {
+      nextParams.delete("query");
+    }
+
     setSearchParams(nextParams);
   };
 
@@ -35,11 +40,6 @@ export default function MoviesPage() {
         setIsLoading(false);
       }
     }
-
-    // async function getMovies() {
-    //   const data = await fetchMovies(query);
-    //   setMovies(data);
-    // }
     getMovies();
   }, [query]);
   return (

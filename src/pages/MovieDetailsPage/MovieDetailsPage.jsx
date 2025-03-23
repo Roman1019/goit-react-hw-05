@@ -24,7 +24,7 @@ export default function MovieDetailsPage() {
     }
     getMoviesDetails();
   }, [movieId]);
-  console.log(movie);
+  // console.log(movie);
 
   return (
     <div>
@@ -45,8 +45,15 @@ export default function MovieDetailsPage() {
           </ul>
         </>
       )}
-      <NavLink to="cast">Cast</NavLink>
-      {/* <NavLink to="cast">Cast</NavLink> */}
+      <ul>
+        <li>
+          <NavLink to="cast">Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to="reviews">Reviews</NavLink>
+        </li>
+      </ul>
+
       <Outlet />
     </div>
   );

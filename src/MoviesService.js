@@ -40,4 +40,31 @@ export const fetchMoviesDetails = async (movieId) => {
   return response.data;
 };
 
+export const fetchMoviesCast = async (movieId) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/credits`,
+    {
+      params: {
+        api_key: "94c6a1b82922671e6e69cf44a2ab5cff",
+      },
+    }
+  );
+
+  return response.data;
+};
+
+export const fetchMoviesReviews = async (movieId) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews
+`,
+    {
+      params: {
+        api_key: "94c6a1b82922671e6e69cf44a2ab5cff",
+      },
+    }
+  );
+
+  return response.data;
+};
+
 // https://api.themoviedb.org/3/search/movie?query=${value}

@@ -4,16 +4,27 @@ import { Link } from "react-router";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   useEffect(() => {
     async function getMoviesHome() {
-      const data = await fetchMoviesHome();
-      setMovies(data);
-      // console.log(data);
+      try {
+        setError(false);
+        setIsLoading(true);
+        const data = await fetchMoviesHome();
+        setMovies(data);
+      } catch {
+        setError(true);
+      } finally {
+        setIsLoading(false);
+      }
     }
     getMoviesHome();
   });
   return (
     <>
+      {/* {isLoading && <b>Loading users...</b>}
+      {error && <b>Whoops something wrong...</b>} */}
       <ul>
         {movies.length > 0 &&
           movies.map((movie) => (
