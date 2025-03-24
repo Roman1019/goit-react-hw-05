@@ -1,13 +1,15 @@
 import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { fetchMovies } from "../../MoviesService.js";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const location = useLocation();
+  console.log(location);
 
   const query = searchParams.get("query") ?? "";
 
@@ -53,7 +55,9 @@ export default function MoviesPage() {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            <Link to={`/movies/${movie.id}`} state={location}>
+              {movie.title}
+            </Link>
           </li>
         ))}
       </ul>

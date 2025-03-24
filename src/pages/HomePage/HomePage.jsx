@@ -20,11 +20,11 @@ export default function HomePage() {
       }
     }
     getMoviesHome();
-  });
+  }, []);
   return (
     <>
-      {/* {isLoading && <b>Loading users...</b>}
-      {error && <b>Whoops something wrong...</b>} */}
+      {isLoading && <b>Loading users...</b>}
+      {error && <b>Whoops something wrong...</b>}
       <ul>
         {movies.length > 0 &&
           movies.map((movie) => (
