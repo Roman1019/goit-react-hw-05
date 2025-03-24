@@ -8,7 +8,7 @@ const getLinkStyle = ({ isActive }) => {
 
 export default function Navigation() {
   return (
-    <header className={css.header}>
+    <header className={`${css.header} ${css.headerGradient}`}>
       <nav className={css.nav}>
         <ul className={css.list}>
           <li>

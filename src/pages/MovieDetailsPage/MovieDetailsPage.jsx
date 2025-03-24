@@ -1,7 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { useLocation, useParams } from "react-router";
 import { fetchMoviesDetails } from "../../MoviesService.js";
 import { NavLink, Outlet, Link } from "react-router";
+import { FaArrowLeft } from "react-icons/fa";
+import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -32,25 +34,40 @@ export default function MovieDetailsPage() {
 
   return (
     <div>
-      <button>
-        <Link to={backLinkHref.current}>Go back</Link>
-      </button>
+      <div className={css.buttonDiv}>
+        <Link to={backLinkHref.current ?? "/"}>
+          <button className={css.buttonGoBack}>
+            <FaArrowLeft className={css.arrow} />
+            Go back
+          </button>
+        </Link>
+      </div>
+
       {isLoading && <b>Loading users...</b>}
       {error && <b>Whoops something wrong...</b>}
       {movie && (
-        <>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-          <h2>{movie.title}</h2>
-          <p>User Score: {`${Math.round(10 * movie.vote_average)}`}%</p>
-          <h3>Overview</h3>
-          <p>{movie.overview}</p>
-          <h3>Genres</h3>
-          <ul>
-            {movie.genres.map((movi) => (
-              <li key={movi.id}>{movi.name}</li>
-            ))}
-          </ul>
-        </>
+        <div className={css.imgTextDiv}>
+          <div>
+            <img
+              className={css.imgGeneral}
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            />
+          </div>
+          <div>
+            <h2>
+              {movie.title} ({movie.release_date.split("-")[0]})
+            </h2>
+            <p>User Score: {`${Math.round(10 * movie.vote_average)}`}%</p>
+            <h3>Overview</h3>
+            <p>{movie.overview}</p>
+            <h3>Genres</h3>
+            <ul>
+              {movie.genres.map((movi) => (
+                <li key={movi.id}>{movi.name}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       )}
       <ul>
         <li>
@@ -60,8 +77,9 @@ export default function MovieDetailsPage() {
           <NavLink to="reviews">Reviews</NavLink>
         </li>
       </ul>
-
-      <Outlet />
+      <Suspense fallback={<div>Loading cast or reviews...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }

@@ -50,7 +50,7 @@ export default function MoviesPage() {
         <input type="text" ref={inputRef} />
         <button>Search</button>
       </form>
-      {isLoading && <b>Loading users...</b>}
+      {isLoading && <b>Loading movie...</b>}
       {error && <b>Whoops something wrong...</b>}
       <ul>
         {movies.map((movie) => (
