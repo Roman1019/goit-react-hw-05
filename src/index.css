@@ -13,7 +13,7 @@ p {
 ul {
   margin: 0;
   padding: 0;
-  /* list-style: none; */
+  list-style: none;
 }
 
 button {
@@ -40,7 +40,7 @@ html {
 }
 
 .section {
-  padding: 16px 0;
+  padding: 8px 0;
   font-family: "Roboto", serif;
   max-width: 1440px;
   margin: 0 auto;

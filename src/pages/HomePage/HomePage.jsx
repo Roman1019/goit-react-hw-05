@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchMoviesHome } from "../../MoviesService.js";
 import { Link } from "react-router";
+import { TiMediaRecord } from "react-icons/ti";
+import css from "./HomePage.module.css";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -28,7 +30,8 @@ export default function HomePage() {
       <ul>
         {movies.length > 0 &&
           movies.map((movie) => (
-            <li key={movie.id}>
+            <li className={css.moviesItem} key={movie.id}>
+              <TiMediaRecord className={css.icon} size={11} />
               <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
             </li>
           ))}

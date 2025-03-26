@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { fetchMovies } from "../../MoviesService.js";
 import { Link, useLocation } from "react-router";
+import { TiMediaRecord } from "react-icons/ti";
+import css from "./MoviesPage.module.css";
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -46,15 +48,18 @@ export default function MoviesPage() {
   }, [query]);
   return (
     <>
-      <form onSubmit={handleSearch}>
-        <input type="text" ref={inputRef} />
-        <button>Search</button>
-      </form>
+      <div className={css.formDiv}>
+        <form onSubmit={handleSearch}>
+          <input className={css.input} type="text" ref={inputRef} />
+          <button className={css.button}>Search</button>
+        </form>
+      </div>
       {isLoading && <b>Loading movie...</b>}
       {error && <b>Whoops something wrong...</b>}
       <ul>
         {movies.map((movie) => (
-          <li key={movie.id}>
+          <li className={css.moviesItem} key={movie.id}>
+            <TiMediaRecord className={css.icon} size={11} />
             <Link to={`/movies/${movie.id}`} state={location}>
               {movie.title}
             </Link>

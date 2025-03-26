@@ -4,6 +4,7 @@ import { fetchMoviesDetails } from "../../MoviesService.js";
 import { NavLink, Outlet, Link } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import css from "./MovieDetailsPage.module.css";
+import { TiMediaRecord } from "react-icons/ti";
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -54,14 +55,16 @@ export default function MovieDetailsPage() {
             />
           </div>
           <div>
-            <h2>
+            <h2 className={css.titleMovie}>
               {movie.title} ({movie.release_date.split("-")[0]})
             </h2>
-            <p>User Score: {`${Math.round(10 * movie.vote_average)}`}%</p>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
-            <ul>
+            <p className={css.userScore}>
+              User Score: {`${Math.round(10 * movie.vote_average)}`}%
+            </p>
+            <h3 className={css.overview}>Overview</h3>
+            <p className={css.overviewPar}>{movie.overview}</p>
+            <h3 className={css.genres}>Genres</h3>
+            <ul className={css.genresList}>
               {movie.genres.map((movi) => (
                 <li key={movi.id}>{movi.name}</li>
               ))}
@@ -69,14 +72,20 @@ export default function MovieDetailsPage() {
           </div>
         </div>
       )}
-      <ul>
-        <li>
-          <NavLink to="cast">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
-        </li>
-      </ul>
+      <div className={css.infoDiv}>
+        <h4 className={css.headCastReviews}>Additional information</h4>
+        <ul className={css.infoList}>
+          <li className={css.infoItem}>
+            <TiMediaRecord className={css.icon} size={11} />
+            <NavLink to="cast">Cast</NavLink>
+          </li>
+          <li className={css.infoItem}>
+            <TiMediaRecord className={css.icon} size={11} />
+            <NavLink to="reviews">Reviews</NavLink>
+          </li>
+        </ul>
+      </div>
+
       <Suspense fallback={<div>Loading cast or reviews...</div>}>
         <Outlet />
       </Suspense>

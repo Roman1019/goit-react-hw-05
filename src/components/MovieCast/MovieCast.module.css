@@ -1,0 +1,25 @@
+.castList {
+  padding-left: 37px;
+}
+
+.castItem {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.imgCast {
+  width: 130px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.icon {
+  position: absolute;
+  top: 217px;
+  left: -19px;
+}
+
+.castName {
+  margin-bottom: 15px;
+}

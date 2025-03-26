@@ -1,0 +1,24 @@
+.formDiv {
+  margin-bottom: 15px;
+}
+
+.input {
+  height: 20px;
+  width: 300px;
+}
+
+.button {
+  height: 26px;
+}
+
+.moviesItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 3px;
+}
+
+.icon {
+  color: black;
+}

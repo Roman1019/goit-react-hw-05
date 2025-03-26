@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMoviesCast } from "../../MoviesService.js";
+import css from "./MovieCast.module.css";
+import { TiMediaRecord } from "react-icons/ti";
 
 export default function MovieCast() {
   const { movieId } = useParams();
@@ -30,14 +32,18 @@ export default function MovieCast() {
       {isLoading && <b>Loading users...</b>}
       {error && <b>Whoops something wrong...</b>}
       {casts.length > 0 ? (
-        <ul>
+        <ul className={css.castList}>
           {casts.map((cast) => (
-            <li key={cast.id}>
+            <li className={css.castItem} key={cast.id}>
               <img
+                className={css.imgCast}
                 src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
-                alt=""
+                alt="photo cast"
               />
-              <p>{cast.name}</p>
+              <p className={css.castName}>
+                <TiMediaRecord className={css.icon} size={11} />
+                {cast.name}
+              </p>
               <p>Character: {cast.character}</p>
             </li>
           ))}
