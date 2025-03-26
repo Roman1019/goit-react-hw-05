@@ -13,7 +13,7 @@ export default function MovieDetailsPage() {
   const [error, setError] = useState(false);
 
   const location = useLocation();
-  const backLinkHref = useRef(location.state);
+  const backLinkHref = useRef(location.state ?? "/movies");
   console.log("backLink", backLinkHref);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function MovieDetailsPage() {
   return (
     <div>
       <div className={css.buttonDiv}>
-        <Link to={backLinkHref.current ?? "/"}>
+        <Link to={backLinkHref.current}>
           <button className={css.buttonGoBack}>
             <FaArrowLeft className={css.arrow} />
             Go back

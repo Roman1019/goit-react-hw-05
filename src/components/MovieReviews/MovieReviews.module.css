@@ -1,0 +1,32 @@
+.list {
+  padding-left: 37px;
+}
+.item {
+  margin-bottom: 15px;
+}
+
+.itemDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 5px;
+  left: -18px;
+  color: black;
+}
+
+.head {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.paragraph {
+  font-weight: 300;
+  font-size: 14px;
+}

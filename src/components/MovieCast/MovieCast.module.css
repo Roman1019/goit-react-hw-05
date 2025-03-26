@@ -10,6 +10,7 @@
 .imgCast {
   width: 130px;
   height: auto;
+  height: 195px;
   object-fit: contain;
   margin-bottom: 15px;
 }

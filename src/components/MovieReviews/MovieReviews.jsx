@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMoviesReviews } from "../../MoviesService.js";
+import { TiMediaRecord } from "react-icons/ti";
+import css from "./MovieReviews.module.css";
 
 export default function MovieCast() {
   const { movieId } = useParams();
@@ -29,11 +31,15 @@ export default function MovieCast() {
       {isLoading && <b>Loading users...</b>}
       {error && <b>Whoops something wrong...</b>}
       {reviews.length > 0 ? (
-        <ul>
+        <ul className={css.list}>
           {reviews.map((review) => (
-            <li key={review.id}>
-              <h3>{review.author}</h3>
-              <p>{review.content}</p>
+            <li className={css.item} key={review.id}>
+              <div className={css.itemDiv}>
+                <TiMediaRecord className={css.icon} size={11} />
+                <h3 className={css.head}>Author: {review.author}</h3>
+              </div>
+
+              <p className={css.paragraph}>{review.content}</p>
             </li>
           ))}
         </ul>
