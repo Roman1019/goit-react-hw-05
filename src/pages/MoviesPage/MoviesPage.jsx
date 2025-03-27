@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { fetchMovies } from "../../MoviesService.js";
-import { Link, useLocation } from "react-router";
-import { TiMediaRecord } from "react-icons/ti";
+import { useLocation } from "react-router";
 import css from "./MoviesPage.module.css";
+import MovieList from "../../components/MovieList/MovieList.jsx";
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -56,16 +56,7 @@ export default function MoviesPage() {
       </div>
       {isLoading && <b>Loading movie...</b>}
       {error && <b>Whoops something wrong...</b>}
-      <ul>
-        {movies.map((movie) => (
-          <li className={css.moviesItem} key={movie.id}>
-            <TiMediaRecord className={css.icon} size={11} />
-            <Link to={`/movies/${movie.id}`} state={location}>
-              {movie.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MovieList movies={movies} />
     </>
   );
 }

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchMoviesHome } from "../../MoviesService.js";
-import { Link } from "react-router";
-import { TiMediaRecord } from "react-icons/ti";
-import css from "./HomePage.module.css";
+import MovieList from "../../components/MovieList/MovieList.jsx";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -15,6 +13,7 @@ export default function HomePage() {
         setIsLoading(true);
         const data = await fetchMoviesHome();
         setMovies(data);
+        console.log(data);
       } catch {
         setError(true);
       } finally {
@@ -27,15 +26,7 @@ export default function HomePage() {
     <>
       {isLoading && <b>Loading movies...</b>}
       {error && <b>Whoops something wrong...</b>}
-      <ul>
-        {movies.length > 0 &&
-          movies.map((movie) => (
-            <li className={css.moviesItem} key={movie.id}>
-              <TiMediaRecord className={css.icon} size={11} />
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-            </li>
-          ))}
-      </ul>
+      <MovieList movies={movies} />
     </>
   );
 }
