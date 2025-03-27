@@ -25,7 +25,7 @@ export default function HomePage() {
   }, []);
   return (
     <>
-      {isLoading && <b>Loading users...</b>}
+      {isLoading && <b>Loading movies...</b>}
       {error && <b>Whoops something wrong...</b>}
       <ul>
         {movies.length > 0 &&

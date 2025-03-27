@@ -43,7 +43,7 @@ export default function MovieDetailsPage() {
         </Link>
       </div>
 
-      {isLoading && <b>Loading users...</b>}
+      {isLoading && <b>Loading details movie...</b>}
       {error && <b>Whoops something wrong...</b>}
       {movie && (
         <div className={css.imgTextDiv}>

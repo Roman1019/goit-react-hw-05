@@ -31,7 +31,7 @@ export default function MovieCast() {
   }, [movieId]);
   return (
     <>
-      {isLoading && <b>Loading users...</b>}
+      {isLoading && <b>Loading cast...</b>}
       {error && <b>Whoops something wrong...</b>}
       {casts.length > 0 ? (
         <ul className={css.castList}>
