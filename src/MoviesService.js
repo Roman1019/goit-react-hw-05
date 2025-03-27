@@ -66,5 +66,3 @@ export const fetchMoviesReviews = async (movieId) => {
 
   return response.data;
 };
-
-// https://api.themoviedb.org/3/search/movie?query=${value}

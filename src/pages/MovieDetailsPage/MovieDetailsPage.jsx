@@ -31,7 +31,6 @@ export default function MovieDetailsPage() {
     }
     getMoviesDetails();
   }, [movieId]);
-  // console.log(movie);
 
   return (
     <div>
@@ -48,12 +47,12 @@ export default function MovieDetailsPage() {
       {error && <b>Whoops something wrong...</b>}
       {movie && (
         <div className={css.imgTextDiv}>
-          <div>
-            <img
-              className={css.imgGeneral}
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            />
-          </div>
+          <img
+            className={css.imgGeneral}
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            width={250}
+          />
+
           <div>
             <h2 className={css.titleMovie}>
               {movie.title} ({movie.release_date.split("-")[0]})
