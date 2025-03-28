@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, Suspense } from "react";
 import { useLocation, useParams } from "react-router";
 import { fetchMoviesDetails } from "../../MoviesService.js";
-import { NavLink, Outlet, Link } from "react-router";
+import { NavLink, Outlet, Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import css from "./MovieDetailsPage.module.css";
 import { TiMediaRecord } from "react-icons/ti";
